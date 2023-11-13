@@ -13,25 +13,23 @@
 import Foundation
 
 struct UTCDateEntity: Codable {
-    let id: String
-    let currentDateTime: String // 앱에서 사용할 데이터.
+    let abbreviation: String
+    let clientIp: String
+    let datetime: String
+    let timezone: String
+    let unixtime: UInt64
+    let utcDatetime: String // 실제 앱에서 사용할 데이터
     let utcOffset: String
-    let isDayLightSavingsTime: Bool
-    let dayOfTheWeek: String
-    let timeZoneName: String
-    let currentFileTime: Int64
-    let ordinalDate: String
-    let serviceResponse: String?
+    let weekNumber: Int
     
     enum CodingKeys: String, CodingKey {
-        case id = "$id"
-        case currentDateTime
-        case utcOffset
-        case isDayLightSavingsTime
-        case dayOfTheWeek
-        case timeZoneName
-        case currentFileTime
-        case ordinalDate
-        case serviceResponse
+        case abbreviation
+        case clientIp = "client_ip"
+        case datetime
+        case timezone
+        case unixtime
+        case utcDatetime = "utc_datetime"
+        case utcOffset = "utc_offset"
+        case weekNumber = "week_number"
     }
 }

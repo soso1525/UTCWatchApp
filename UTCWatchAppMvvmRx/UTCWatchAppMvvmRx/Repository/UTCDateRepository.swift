@@ -17,7 +17,7 @@ import Foundation
 
 class UTCDateRepository {
     func fetchCurrentDate(completionHandler: @escaping (UTCDateEntity) -> Void) {
-         let url = URL(string: "http://worldclockapi.com/api/json/utc/now")!
+        let url = URL(string: "https://worldtimeapi.org/api/timezone/Etc/UTC")!
         
         // All parameters in comletion handler are optional.
         URLSession.shared.dataTask(with: url) { [weak self] data, response, error in

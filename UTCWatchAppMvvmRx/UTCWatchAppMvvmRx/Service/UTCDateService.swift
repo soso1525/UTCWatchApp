@@ -19,7 +19,7 @@ class UTCDateService {
     func getToday(completionHandler: @escaping (UTCDate) -> Void) {
         utcDateRepository.fetchCurrentDate {[weak self] utcDateEntity in
             guard let self = self else { return }
-            let date = parseDate(from: utcDateEntity.currentDateTime)
+            let date = parseDate(from: utcDateEntity.utcDatetime)
             self.utcDate = UTCDate(date: date)
             completionHandler(self.utcDate)
         }
@@ -28,7 +28,7 @@ class UTCDateService {
     private func parseDate(from: String) -> Date {
         let utcDateFormatter = DateFormatter()
         utcDateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        utcDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm'Z'" // 2023-11-05T10:05Z
+        utcDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ" // 2023-11-13T16:10:25.616948+00:00.
         return utcDateFormatter.date(from: from)!
     }
     
